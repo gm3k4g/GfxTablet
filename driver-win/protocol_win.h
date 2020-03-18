@@ -1,7 +1,7 @@
-// Windows implementation of GfxTablet.
 #define GFXTABLET_PORT 40118
 
 #define PROTOCOL_VERSION 2
+
 
 #pragma pack(push)
 #pragma pack(1)
