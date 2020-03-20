@@ -8,21 +8,30 @@ JAVAC=javac
 sources=$(wildcard *.java)
 classes=$(sources:.java=.class)
 
+# Jar name
 JARTARGET=networktablet.jar
+
+# Self explanatory
 JAR=jar
+
+# Jar flags
 JARFLAGS=cmvf
+
+# Using a manifest file to assign the main java class
 JARMANIFEST=MANIFEST.MF
 
-all=networktablet
+#all=networktablet
 
+# create jar file (compiles everything)
+jar: $(classes)
+	$(JAR) $(JARFLAGS) $(JARMANIFEST) $(JARTARGET) $(classes)
+
+# just create the class files
 networktablet: $(classes)
-
-clean:
-	rm --force *.class
 
 %.class: %.java
 	$(JAVAC) $<
 
-jar: $(classes)
-	$(JAR) $(JARFLAGS) $(JARMANIFEST) $(JARTARGET) $(classes)
-
+# clear files
+clean:
+	rm --force *.class
